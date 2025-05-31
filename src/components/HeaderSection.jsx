@@ -68,15 +68,12 @@ export default function HeaderSection() {
       </div>
       {/* Description */}
       <div className="w-full max-w-md mt-8">
-        <h1 className="text-center text-2xl md:text-3xl font-bold Instrument Sans text-gray-900 leading-tight">
-          Software Developer <span>creating</span> solutions
-          <span className=" px-3 mx-2 bg-gray-900 rounded-4xl pb-1 text-white text-2xl ">
+        <h1 className=" text-center text-2xl md:text-3xl font-bold Instrument Sans text-gray-900 leading-tight">
+          Software Developer <span>creating solutions</span>
+          <span className=" px-3 mx-1.5 mb-2 bg-gray-900 rounded-full pb-1 text-white text-xl ">
             one
           </span>
-          <span className=" px-3 mr-1 bg-gray-900 rounded-4xl pb-1 text-white text-2xl ">
-            step
-          </span>
-          at a time.
+          step at a time.
         </h1>
       </div>
       {/* Social Icons */}
