@@ -71,7 +71,10 @@ export default function HeaderSection() {
         <h1 className="text-center text-2xl md:text-3xl font-bold Instrument Sans text-gray-900 leading-tight">
           Software Developer <span>creating</span> solutions
           <span className=" px-3 mx-2 bg-gray-900 rounded-4xl pb-1 text-white text-2xl ">
-            one step
+            one
+          </span>
+          <span className=" px-3 mr-1 bg-gray-900 rounded-4xl pb-1 text-white text-2xl ">
+            step
           </span>
           at a time.
         </h1>
