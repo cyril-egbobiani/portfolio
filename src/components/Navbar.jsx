@@ -32,21 +32,19 @@ export default function Navbar() {
       </div>
       {/* Mobile/Tablet Navbar (md and below) */}
       <div
-        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full py-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
+        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full p-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
           open ? "shadow-xl scale-95" : "shadow-md scale-100"
         } md:p-3`}
       >
         {/* Logo */}
         <img
           src={"/logo.svg"}
-          className="  tracking-widest md:w-12 md:h-12 w-11 h-10"
+          className="tracking-widest md:w-12 md:h-12 w-11 h-10"
           alt="Cyril"
         />
-        {/* Spacer */}
-        <div className="w-8 md:w-12" />
         {/* Menu/X Icon */}
         <button
-          className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 flex-1 bg-gray-100 border border-gray-300 flex items-center justify-center md:p-3"
+          className="ml-4 p-2 rounded-full hover:bg-gray-100 transition-all duration-300 bg-gray-100 border border-gray-300 flex items-center justify-center md:p-3"
           onClick={() => setOpen((prev) => !prev)}
           aria-label={open ? "Close menu" : "Open menu"}
         >
@@ -61,18 +59,18 @@ export default function Navbar() {
       </div>
       {/* Modal Menu with smooth transition */}
       <div
-        className={`fixed left-1/2 -translate-x-1/2 bottom-20 z-[70] w-fit flex flex-col items-center lg:hidden transition-all duration-300 ${
+        className={`fixed left-1/2 -translate-x-1/2 bottom-20 z-[70]  flex flex-col items-center lg:hidden transition-all duration-300 ${
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-10 pointer-events-none"
         }`}
       >
-        <div className="relative w-[vw] max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] rounded-[2rem] border border-gray-100 p-4 flex flex-col items-center shadow-sm bg-white ">
+        <div className="relative w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] rounded-[2rem] border border-blue-100 p-4 flex flex-col items-center shadow-sm bg-white">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-normal text-black hover:text-emerald-600 transition text-lg md:text-xl mb-4"
+              className="font-normal text-black hover:text-emerald-600 transition text-lg md:text-xl mb-3 mx-18 whitespace-nowrap"
               onClick={() => setOpen(false)}
             >
               {item.label}
