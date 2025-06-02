@@ -4,8 +4,8 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Home", href: "#home" }, // Added Home nav item
   { label: "About me", href: "#about" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "Featured Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
 ];
 
 export default function Navbar() {
@@ -16,7 +16,7 @@ export default function Navbar() {
       {/* Desktop Navbar (lg and above) */}
       <div className="hidden lg:flex lg:border backdrop-blur-2xl justify-center items-between py-3 bg-white rounded-full fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3">
         {/* Logo */}
-        <img src="/logo.svg" alt="Cyril" className="mr-25" />
+        <img src="/logo.svg" alt="Cyril" className="lg:mr-25" />
         <ul className="flex-1 flex gap-8 font-normal w-fit ">
           {navItems.map((item) => (
             <li key={item.label}>
@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* Logo */}
         <img
           src={"/logo.svg"}
-          className="flex-1 flex items-center font-bold text-lg tracking-widest md:w-12 md:h-12 w-8 h-8"
+          className="  tracking-widest md:w-12 md:h-12 w-11 h-10"
           alt="Cyril"
         />
         {/* Spacer */}
