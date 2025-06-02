@@ -61,6 +61,7 @@ export default function HeaderSection() {
 
   return (
     <motion.section
+      id="home"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
