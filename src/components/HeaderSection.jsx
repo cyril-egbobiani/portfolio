@@ -52,7 +52,7 @@ export default function HeaderSection() {
     hover: {
       scale: 1.1,
       rotate: 10,
-      transition: { duration: 0.1, easeOut},
+      transition: { duration: .009, easeOut},
     },
     tap: {
       scale: 0.99,
