@@ -131,7 +131,7 @@ export default function HeaderSection() {
           {/* Name and Location */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col justify-center mr-10"
+            className="flex flex-col justify-center mr-5"
           >
             <motion.span
               variants={itemVariants}
