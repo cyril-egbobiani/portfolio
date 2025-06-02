@@ -3,19 +3,22 @@ import { Locate, X } from "lucide-react";
 
 export default function HeaderSection() {
   return (
-    <section className="flex flex-col items-center justify-center min-h-[60vh] mt-10 md:mt-20">
+    <section className="flex flex-col items-center justify-center min-h-[60vh] mt-25">
       {/* Card */}
       <div
         className="
-          rounded-[2rem]
-          border border-gray-100
-          p-4
-          w-[85vw] max-w-xs
-          flex flex-col items-center shadow-sm
-          bg-white
-          md:p-4
-          md:max-w-[26vw]
-        "
+    w-[vw] max-w-xs
+    sm:max-w-sm
+    md:max-w-[40vw]
+    lg:max-w-[32vw]
+    xl:max-w-[28vw]
+    2xl:max-w-[24vw]
+    rounded-[2rem]
+    border border-gray-100
+    p-4
+    flex flex-col items-center shadow-sm
+    bg-white
+  "
         style={{
           background:
             "linear-gradient(180deg, #fff 60%, #F9CBA6 90%, #7B5CFA 100%)",
@@ -25,19 +28,20 @@ export default function HeaderSection() {
       >
         <div className="flex items-center w-full gap-3">
           {/* Image */}
-          <div className="w-30 h-20 overflow-hidden rounded-[1.2rem] flex-shrink-0">
+          <div className="w-30 h-20 overflow-visible rounded-3xl flex-shrink-0 relative flex items-center justify-center">
+            <span className="absolute inset-0 rounded-2xl ring-3 ring-indigo-50 border-2 border-white pointer-events-none"></span>
             <img
               src="/profile.jpg"
               alt="Cyril Egbobiani"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </div>
           {/* Name and Location */}
-          <div className="flex flex-col justify-center">
-            <span className="font-extrabold text-2xl text-left leading-tight text-gray-800 Instrument Sans">
+          <div className="flex flex-col justify-center mr-10">
+            <span className="font-extrabold text-2xl text-left leading-tight Instrument Sans text-gray-700">
               Cyril
             </span>
-            <span className="font-extrabold text-2xl leading-tight text-left text-gray-800 Instrument Sans -mt-1">
+            <span className="font-extrabold text-2xl leading-tight text-left Instrument Sans -mt-1 text-gray-700">
               Egbobiani
             </span>
             <span className="flex items-center gap-1 text-emerald-500 font-medium text-sm mt-1 Instrument Sans">
@@ -49,18 +53,19 @@ export default function HeaderSection() {
         {/* Button */}
         <button
           className="
-            w-full mt-4 mb-1 py-3
-            rounded-2xl
-            text-white font-semibold Instrument Sans
-            flex items-center justify-center text-base
-            shadow-md transition
-            bg-black
-            md:mt-6
-          "
+    w-full mt-4 py-3
+    rounded-2xl
+    text-white font-semibold Instrument Sans
+    flex items-center justify-center text-base
+    shadow-lg
+    border-b-4 border-indigo-900
+    transition-all duration-150
+    active:scale-95 active:shadow-none
+    hover:shadow-[0_2px_8px_0_rgba(80,80,180,0.18)]
+    relative z-10
+  "
           style={{
             background: "linear-gradient(180deg, #181818 80%, #7B5CFA 120%)",
-            boxShadow:
-              "0 2px 8px 0 rgba(123,92,250,0.10), 0 1.5px 8px 0 rgba(249,203,166,0.10)",
           }}
         >
           Lets connect <span className="ml-2">👋🏼</span>
@@ -68,15 +73,8 @@ export default function HeaderSection() {
       </div>
       {/* Description */}
       <div className="w-full max-w-md mt-8">
-        <h1 className=" text-center text-2xl md:text-3xl font-bold Instrument Sans text-gray-900 leading-tight">
-          Software Developer <span>creating lasting solutions</span>
-          <span className=" px-3 mx-1.5 bg-gray-900 rounded-full pb-1 text-white text-xl ">
-            one
-          </span>
-          <span className=" px-3 mr-1.5 bg-gray-900 rounded-full pb-1 text-white text-xl ">
-            step
-          </span>
-         at a time.
+        <h1 className=" text-center text-2xl md:text-3xl font-bold Instrument Sans text-gray-800 leading-tight">
+          Software Developer designing with empathy and developing with clarity.
         </h1>
       </div>
       {/* Social Icons */}
