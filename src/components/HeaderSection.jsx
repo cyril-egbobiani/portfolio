@@ -64,7 +64,7 @@ export default function HeaderSection() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col items-center justify-center min-h-[60vh] mt-10"
+      className="flex flex-col items-center justify-center min-h-[60vh] mt-10 lg:mt-20"
     >
       {/* Card */}
       <motion.div
