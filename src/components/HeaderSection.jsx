@@ -1,5 +1,4 @@
-import React from "react";
-import { Locate, X } from "lucide-react";
+ import { Locate, X } from "lucide-react";
 
 export default function HeaderSection() {
   return (
