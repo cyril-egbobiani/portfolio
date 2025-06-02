@@ -70,7 +70,7 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              className="font-normal text-black hover:text-emerald-600 transition text-lg md:text-xl mb-3 mx-16 whitespace-nowrap"
+              className="font-normal text-black hover:text-emerald-500 transition text-lg md:text-xl mb-3 mx-16 whitespace-nowrap"
               onClick={() => setOpen(false)}
             >
               {item.label}
