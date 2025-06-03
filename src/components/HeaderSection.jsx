@@ -65,7 +65,7 @@ export default function HeaderSection() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col items-center justify-center min-h-[60vh] mt-10 lg:mt-20"
+      className="flex flex-col items-center justify-center min-h-[60vh] mt-30"
     >
       {/* Card */}
       <motion.div
@@ -198,7 +198,7 @@ export default function HeaderSection() {
       <motion.div variants={itemVariants} className="w-full max-w-md mt-8">
         <motion.h1
           variants={itemVariants}
-          className="text-center text-2xl md:text-3xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 bg-clip-text text-transparent"
+          className="text-center text-2xl md:text-3xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 px-5 bg-clip-text text-transparent"
         >
           Software Developer designing with empathy and developing with clarity.
         </motion.h1>
