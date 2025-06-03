@@ -13,7 +13,7 @@ export default function AboutMeSection() {
     >
       {/* "About Me" Pill */}
       <motion.span
-        className="mb-4 px-6 py-1 text-2xl font-bold text-gray-700 "
+        className="text-center text-2xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 bg-clip-text text-transparent border-1 mb-5"
         initial={{ scale: 0.95, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true, amount: 0.8 }}
@@ -23,7 +23,7 @@ export default function AboutMeSection() {
       </motion.span>
       {/* Description */}
       <motion.p
-        className="max-w-lg  lg:text-center text-gray-700 text-base md:text-lg font-medium leading-relaxed"
+        className="max-w-lg  lg:text-center text-gray-800 text-base md:text-lg font-medium leading-relaxed"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.7 }}
@@ -32,7 +32,7 @@ export default function AboutMeSection() {
         My aim is to build as many solutions and make as many people happy. As
         much as I would love to say “I can do it all on my own” I can’t. I so
         much derive joy in working with people and creating not just solutions
-        but life transformations.
+        together but life transformations.
       </motion.p>
     </motion.section>
   );
