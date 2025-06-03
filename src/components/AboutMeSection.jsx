@@ -5,7 +5,7 @@ export default function AboutMeSection() {
   return (
     <motion.section
       id="about"
-      className="flex flex-col items-center justify-center py-12 px-4 my-20"
+      className="flex flex-col items-center justify-center py-12 mt-5 px-4 my-20"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
