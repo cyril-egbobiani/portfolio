@@ -73,7 +73,7 @@ export default function Navbar() {
 			</div>
 			{/* Modal Menu with smooth transition */}
 			<div
-				className={`fixed left-1/2 -translate-x-1/2 bottom-20 z-[70] flex flex-col items-center lg:hidden transition-all duration-300 ${
+				className={`fixed left-1/2 -translate-x-1/2 bottom-21 z-[70] flex flex-col items-center lg:hidden transition-all duration-300 ${
 					open
 						? "opacity-100 translate-y-0 pointer-events-auto"
 						: "opacity-0 translate-y-10 pointer-events-none"
