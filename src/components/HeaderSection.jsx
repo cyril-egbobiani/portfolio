@@ -52,7 +52,7 @@ export default function HeaderSection() {
     hover: {
       scale: 1.1,
       rotate: 10,
-      transition: { duration: .009, easeOut},
+      transition: { duration: 0.009, easeOut },
     },
     tap: {
       scale: 0.99,
@@ -65,7 +65,7 @@ export default function HeaderSection() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col items-center justify-center min-h-[60vh] mt-30 sm:mt:10"
+      className="flex flex-col items-center justify-center min-h-[60vh] mt-6 sm:mt-15 lg:mt-30"
     >
       {/* Card */}
       <motion.div
