@@ -42,7 +42,7 @@ const SkillsSection = () => {
         Skills
       </span>
       {/* Skills Grid */}
-      <div className="bg-white/40 backdrop-blur-2xl rounded-3xl  shadow-amber-100 border border-white px-6 py-10 max-w-lg w-full">
+      <div className="bg-white/40 backdrop-blur-2xl rounded-3xl  shadow-amber-100 border border-white px-2 py-10 max-w-lg w-full">
         <div className="grid grid-cols-3 gap-y-10 gap-x-6">
           {skills.map((skill) => (
             <div key={skill.name} className="flex flex-col items-center">
