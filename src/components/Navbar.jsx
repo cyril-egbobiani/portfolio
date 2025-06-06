@@ -79,7 +79,7 @@ export default function Navbar() {
 						: "opacity-0 translate-y-10 pointer-events-none"
 				}`}
 			>
-				<div className="relative w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] rounded-[2rem] border border-blue-100 p-4 flex flex-col items-center shadow-sm bg-white">
+				<div className="relative w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] rounded-[2rem] border border-blue-100 p-4 flex flex-col items-center shadow-sm bg-white/70 backdrop-blur-sm ">
 					{navItems.map((item) => (
 						<a
 							key={item.label}
