@@ -10,6 +10,15 @@ const navItems = [
 
 export default function Navbar() {
 	const [open, setOpen] = useState(false);
+	const [animating, setAnimating] = useState(false);
+
+	const handleMenuClick = () => {
+		setAnimating(true);
+		setTimeout(() => {
+			setOpen((prev) => !prev);
+			setAnimating(false);
+		}, 250); // Duration matches animation
+	};
 
 	// Smooth scroll handler
 	const handleNavClick = (e, href) => {
@@ -59,14 +68,23 @@ export default function Navbar() {
 				{/* Menu/X Icon */}
 				<button
 					className="ml-4 p-2 rounded-full hover:bg-gray-100 transition-all duration-300 bg-gray-100 border border-gray-300 flex items-center justify-center md:p-3"
-					onClick={() => setOpen((prev) => !prev)}
+					onClick={handleMenuClick}
 					aria-label={open ? "Close menu" : "Open menu"}
+					disabled={animating}
 				>
-					<span className="transition-all duration-300 ease-in-out">
-						{open ? (
-							<X className="w-7 h-7 md:w-8 md:h-8 rotate-180 transition-transform duration-300" />
+					<span
+						className={`transition-all duration-300 ease-in-out ${
+							animating ? "animate-spin-fade" : ""
+						}`}
+						style={{
+							display: "inline-block",
+							transition: "transform 0.25s, opacity 0.25s",
+						}}
+					>
+						{!open ? (
+							<Menu className="w-7 h-7 md:w-8 md:h-8" />
 						) : (
-							<Menu className="w-7 h-7 md:w-8 md:h-8 rotate-0 transition-transform duration-300" />
+							<X className="w-7 h-7 md:w-8 md:h-8" />
 						)}
 					</span>
 				</button>
@@ -102,6 +120,14 @@ export default function Navbar() {
           .animate-fadeInUp {
             animation: fadeInUp 0.3s cubic-bezier(.4,0,.2,1);
           }
+          @keyframes spinFade {
+                    0% { opacity: 1; transform: rotate(0deg) scale(1);}
+                    80% { opacity: 0; transform: rotate(90deg) scale(0.7);}
+                    100% { opacity: 0; transform: rotate(90deg) scale(0.7);}
+                }
+                .animate-spin-fade {
+                    animation: spinFade 0.25s cubic-bezier(.4,0,.2,1);
+                }
         `}
 			</style>
 		</nav>
