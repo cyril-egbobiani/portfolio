@@ -11,13 +11,16 @@ const navItems = [
 export default function Navbar() {
 	const [open, setOpen] = useState(false);
 	const [animating, setAnimating] = useState(false);
+	const [iconOut, setIconOut] = useState(false);
 
 	const handleMenuClick = () => {
+		setIconOut(true);
 		setAnimating(true);
 		setTimeout(() => {
 			setOpen((prev) => !prev);
+			setIconOut(false);
 			setAnimating(false);
-		}, 250); // Duration matches animation
+		}, 220); // Duration matches animation
 	};
 
 	// Smooth scroll handler
@@ -74,11 +77,15 @@ export default function Navbar() {
 				>
 					<span
 						className={`transition-all duration-300 ease-in-out ${
-							animating ? "animate-spin-fade" : ""
+							iconOut
+								? "animate-scale-fade-out"
+								: animating
+								? "animate-scale-fade-in"
+								: ""
 						}`}
 						style={{
 							display: "inline-block",
-							transition: "transform 0.25s, opacity 0.25s",
+							transition: "transform 0.22s, opacity 0.22s",
 						}}
 					>
 						{!open ? (
@@ -128,6 +135,20 @@ export default function Navbar() {
                 .animate-spin-fade {
                     animation: spinFade 0.25s cubic-bezier(.4,0,.2,1);
                 }
+                @keyframes scaleFadeOut {
+            0% { opacity: 1; transform: scale(1);}
+            100% { opacity: 0; transform: scale(0.7);}
+          }
+          @keyframes scaleFadeIn {
+            0% { opacity: 0; transform: scale(0.7);}
+            100% { opacity: 1; transform: scale(1);}
+          }
+          .animate-scale-fade-out {
+            animation: scaleFadeOut 0.22s cubic-bezier(.4,0,.2,1);
+          }
+          .animate-scale-fade-in {
+            animation: scaleFadeIn 0.22s cubic-bezier(.4,0,.2,1);
+          }
         `}
 			</style>
 		</nav>
