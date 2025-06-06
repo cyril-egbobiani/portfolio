@@ -11,6 +11,7 @@ html {
 
 body {
   font: "Instrument Sans";
+  background-color: #f5f5f5;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
