@@ -1,5 +1,7 @@
 import { Locate, X } from "lucide-react";
 import { easeOut, motion } from "framer-motion";
+import TrueFocus from "./TrueFocus";
+import SplitText from "./SplitText";
 
 export default function HeaderSection() {
   // Animation variants
@@ -57,6 +59,10 @@ export default function HeaderSection() {
     tap: {
       scale: 0.99,
     },
+  };
+
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
   };
 
   return (
@@ -198,7 +204,7 @@ export default function HeaderSection() {
       <motion.div variants={itemVariants} className="w-full max-w-md mt-8">
         <motion.h1
           variants={itemVariants}
-          className="text-center text-2xl md:text-3xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 px-5 bg-clip-text text-transparent"
+          className="text-center sm:px-4 text-3xl md:text-4xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500  bg-clip-text text-transparent"
         >
           Software Developer designing with empathy and developing with clarity.
         </motion.h1>
