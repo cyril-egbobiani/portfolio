@@ -40,7 +40,7 @@ export default function Navbar() {
 	return (
 		<nav>
 			{/* Desktop Navbar (lg and above) */}
-			<div className="hidden lg:flex justify-center items-between py-3 bg-[#2E2E2E]/90 backdrop-blur-md rounded-full fixed top-4 left-1/2 -translate-x-1/2 border border-[#39304d] z-50 px-5 pl-3 shadow-lg">
+			<div className="hidden lg:flex justify-center items-between py-3 bg-[#2E2E2E]/90 backdrop-blur-md rounded-full fixed top-4 left-1/2 -translate-x-1/2 border border-[#393A40] z-50 px-5 pl-3 shadow-lg">
 				{/* Logo */}
 				<img src="/logo.svg" alt="Cyril" className="lg:mr-25" />
 				<ul className="flex-1 flex gap-8 font-bold w-fit ">
@@ -48,11 +48,8 @@ export default function Navbar() {
 						<li key={item.label}>
 							<a
 								href={item.href}
-								className="hover:text-emerald-400 font-light text-gray-100 transition-colors duration-300 Instrument Sans"
-								style={{
-									WebkitTextStroke: "0.7px #e5e7eb", // light gray stroke for contrast
-									textShadow: "0 1px 8px #00000044", // subtle shadow for glass look
-								}}
+								className="hover:text-emerald-200 font-light text-gray-100 transition-colors duration-300 Instrument Sans"
+							 
 							>
 								{item.label}
 							</a>
@@ -62,7 +59,7 @@ export default function Navbar() {
 			</div>
 			{/* Mobile/Tablet Navbar (md and below) */}
 			<div
-				className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#2E2E2E]/90 backdrop-blur-md rounded-full p-2 flex items-center justify-between z-50 border border-[#39304d] w-fit px-2 transition-all duration-300 ${
+				className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#2E2E2E]/90 backdrop-blur-md rounded-full p-2 flex items-center justify-between z-50 border border-[#393A40] w-fit px-2 transition-all duration-300 ${
 					open ? "shadow-xl scale-95" : "shadow-md scale-100"
 				} md:p-3`}
 			>
@@ -74,7 +71,7 @@ export default function Navbar() {
 				/>
 				{/* Menu/X Icon */}
 				<button
-					className="ml-4 p-2 rounded-full hover:bg-[#39304d] transition-all duration-300 bg-[#2E2E2E] border border-[#39304d] flex items-center justify-center md:p-3"
+					className="ml-4 p-2 rounded-full hover:bg-[#393A40] transition-all duration-300 bg-[#2E2E2E] border border-[#393A40] flex items-center justify-center md:p-3"
 					onClick={handleMenuClick}
 					aria-label={open ? "Close menu" : "Open menu"}
 					disabled={animating}
@@ -93,9 +90,9 @@ export default function Navbar() {
 						}}
 					>
 						{!open ? (
-							<Menu className="w-7 h-7 md:w-8 md:h-8 text-emerald-300 stroke-[2.5]" />
+							<Menu className="w-7 h-7 md:w-8 md:h-8 text-gray-300 stroke-[2.5]" />
 						) : (
-							<X className="w-7 h-7 md:w-8 md:h-8 text-emerald-300 stroke-[2.5]" />
+							<X className="w-7 h-7 md:w-8 md:h-8 text-gray-300 stroke-[2.5]" />
 						)}
 					</span>
 				</button>
@@ -108,16 +105,13 @@ export default function Navbar() {
 						: "opacity-0 translate-y-10 pointer-events-none"
 				}`}
 			>
-				<div className="relative w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] rounded-[2rem] border border-[#39304d] p-4 flex flex-col items-center shadow-lg bg-[#2E2E2E]/95 backdrop-blur-md ">
+				<div className="relative w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] rounded-[2rem] border border-[#393A40] p-4 flex flex-col items-center shadow-lg bg-[#2E2E2E]/95 backdrop-blur-md ">
 					{navItems.map((item) => (
 						<a
 							key={item.label}
 							href={item.href}
-							className="text-gray-100 hover:text-emerald-400 transition text-lg md:text-xl mb-3 mx-16 whitespace-nowrap"
-							style={{
-								WebkitTextStroke: "0.7px #e5e7eb", // light gray stroke for contrast
-								textShadow: "0 1px 8px #00000044",
-							}}
+							className="text-gray-100 hover:text-emerald-300 transition text-lg md:text-xl mb-3 mx-16 whitespace-nowrap"
+							 
 							onClick={(e) => handleNavClick(e, item.href)}
 						>
 							{item.label}

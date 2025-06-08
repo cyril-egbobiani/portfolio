@@ -1,10 +1,11 @@
 import "./App.css";
 import AboutMeSection from "./components/AboutMeSection.jsx";
-import HeaderSection from "./components/HeaderSection.jsx";
+import HeaderSection from "./components/HeroSection.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProjectsSection from "./components/ProjectsSection.jsx";
 import SkillsSection from "./components/SkillsSection.jsx";
 import Silk from "./components/SilkBackground.jsx";
+import HeroSection from "./components/HeroSection.jsx";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           />
         </div>
         <Navbar />
+        <HeroSection />
+
         {/* 
-        <HeaderSection />
         <AboutMeSection />
         <SkillsSection />
         <ProjectsSection /> */}
