@@ -73,20 +73,26 @@ export default function HeaderSection() {
         initial="hidden"
         animate="visible"
         className="
-          bg-[#2E2E2E]/90 backdrop-blur-md
           w-[vw] max-w-xs
           sm:max-w-sm
           md:max-w-[40vw]
           lg:max-w-[32vw]
           xl:max-w-[28vw]
           2xl:max-w-[24vw]
-          rounded-4xl
-          border border-[#393A40]
-          p-2
-          flex flex-col items-center shadow-2xl
+          rounded-[2rem]
+          border border-gray-100
+          p-4
+          flex flex-col items-center shadow-sm
+          bg-white
           transform-gpu
           will-change-transform
         "
+        style={{
+          background:
+            "linear-gradient(180deg, #fff 60%, #F9CBA6 90%, #7B5CFA 100%)",
+          boxShadow:
+            "0 4px 24px 0 rgba(123,92,250,0.10), 0 1.5px 8px 0 rgba(249,203,166,0.10)",
+        }}
       >
         <motion.div
           variants={itemVariants}
@@ -95,7 +101,7 @@ export default function HeaderSection() {
           {/* Image */}
           <motion.div className="w-30 h-20 overflow-visible rounded-3xl flex-shrink-0 relative flex items-center justify-center">
             <motion.span
-              className="absolute inset-0 rounded-3xl ring-3 ring-[#393A40] border-2 border-[#2E2E2E] pointer-events-none"
+              className="absolute inset-0 rounded-2xl ring-3 ring-indigo-50 border-2 border-white pointer-events-none"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
                 opacity: 1,
@@ -120,7 +126,7 @@ export default function HeaderSection() {
               }}
               src="/profile.jpg"
               alt="Cyril Egbobiani"
-              className="w-full h-full object-cover rounded-3xl"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </motion.div>
           {/* Name and Location */}
@@ -130,13 +136,13 @@ export default function HeaderSection() {
           >
             <motion.span
               variants={itemVariants}
-              className="font-extrabold text-2xl text-left leading-tight Instrument Sans text-gray-100"
+              className="font-extrabold text-2xl text-left leading-tight Instrument Sans text-gray-700"
             >
               Cyril
             </motion.span>
             <motion.span
               variants={itemVariants}
-              className="font-extrabold text-2xl leading-tight text-left Instrument Sans -mt-1 text-gray-100"
+              className="font-extrabold text-2xl leading-tight text-left Instrument Sans -mt-1 text-gray-700"
             >
               Egbobiani
             </motion.span>
@@ -153,25 +159,22 @@ export default function HeaderSection() {
         <motion.button
           variants={itemVariants}
           whileHover={{
-            scale: 1.04,
-            boxShadow: "0 8px 30px 0 rgba(209,213,219,0.25), 0 2px 8px 0 rgba(0,0,0,0.10)", // gray-300
-            y: -2,
+            scale: 1.02,
+            boxShadow: "0 8px 30px rgba(123,92,250,0.2)",
           }}
-          whileTap={{ scale: 0.98, y: 1 }}
+          whileTap={{ scale: 0.98 }}
           className="
             w-full mt-4 py-3
-            rounded-3xl
-            text-gray-900 font-semibold Instrument Sans
+            rounded-2xl
+            text-white font-semibold Instrument Sans
             flex items-center justify-center text-base
-            shadow-[0_4px_20px_0_rgba(209,213,219,0.18),0_1.5px_8px_0_rgba(0,0,0,0.10)]
+            shadow-md
             transition-all duration-150
             relative z-10
-            bg-gradient-to-b from-gray-300 via-gray-200 to-gray-100
-            border-b-4 border-gray-400
-            active:border-b-2
-            active:from-gray-200
-            active:to-gray-300
           "
+          style={{
+            background: "linear-gradient(360deg, #181818 80%, #7B5CFA 120%)",
+          }}
         >
           Lets talk{" "}
           <motion.span
@@ -195,7 +198,7 @@ export default function HeaderSection() {
       <motion.div variants={itemVariants} className="w-full max-w-md mt-8">
         <motion.h1
           variants={itemVariants}
-          className="text-center text-2xl md:text-3xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-100 via-gray-400 to-gray-500 px-5 bg-clip-text text-transparent"
+          className="text-center text-2xl md:text-3xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 px-5 bg-clip-text text-transparent"
         >
           Software Developer designing with empathy and developing with clarity.
         </motion.h1>
@@ -209,7 +212,7 @@ export default function HeaderSection() {
             whileHover="hover"
             whileTap="tap"
             custom={index}
-            className="w-10 h-10 rounded-xl bg-[#23232e] border border-[#393A40] flex items-center justify-center text-gray-100 text-xl hover:bg-[#393A40] transition"
+            className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-800 text-xl hover:bg-gray-50 transition"
           >
             <img src={`/${social}.svg`} alt={social} />
           </motion.button>

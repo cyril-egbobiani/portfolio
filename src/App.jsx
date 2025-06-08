@@ -1,32 +1,33 @@
 import "./App.css";
 import AboutMeSection from "./components/AboutMeSection.jsx";
-import HeaderSection from "./components/HeroSection.jsx";
+import HeaderSection from "./components/HeaderSection.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProjectsSection from "./components/ProjectsSection.jsx";
 import SkillsSection from "./components/SkillsSection.jsx";
-import Silk from "./components/SilkBackground.jsx";
-import HeroSection from "./components/HeroSection.jsx";
+import Dither from "./components/Ditch.jsx";
+import HeroSection from "./components/HeaderSection.jsx";
 
 function App() {
   return (
     <>
       <div>
-        <div className="fixed inset-0 -z-10">
-          <Silk
-            speed={5}
-            scale={0.7}
-            color="#2E2E2E"
-            noiseIntensity={1.5}
-            rotation={0}
+        {/* <div style={{ width: "100%", height: "600px", position: "relative" }}>
+          <Dither
+            waveColor={[0.5, 0.5, 0.5]}
+            disableAnimation={false}
+            enableMouseInteraction={true}
+            mouseRadius={0.3}
+            colorNum={4}
+            waveAmplitude={0.3}
+            waveFrequency={3}
+            waveSpeed={0.05}
           />
-        </div>
+        </div> */}
         <Navbar />
         <HeroSection />
-
-        {/* 
         <AboutMeSection />
         <SkillsSection />
-        <ProjectsSection /> */}
+        <ProjectsSection />
       </div>
     </>
   );
