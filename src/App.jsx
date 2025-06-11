@@ -1,23 +1,16 @@
 import "./App.css";
-import AboutMeSection from "./components/AboutMeSection.jsx";
-import HeaderSection from "./components/HeaderSection.jsx";
-import Navbar from "./components/Navbar.jsx";
-import ProjectsSection from "./components/ProjectsSection.jsx";
-import SkillsSection from "./components/SkillsSection.jsx";
-import Dither from "./components/Ditch.jsx";
-import HeroSection from "./components/HeaderSection.jsx";
-
-function App() {
+import Navbar from "./components/Navbar";
+import HeaderSection from "./components/HeaderSection";
+import AboutMeSection from "./components/AboutMeSection";
+import SkillsSection from "./components/SkillsSection";
+  function App() {
   return (
-    <>
-      <div>
-        <Navbar />
-        <HeroSection />
-        <AboutMeSection />
-        <SkillsSection />
-        <ProjectsSection />
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <HeaderSection />
+      <AboutMeSection />
+      <SkillsSection />
       </div>
-    </>
   );
 }
 
