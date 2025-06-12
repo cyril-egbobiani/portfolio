@@ -1,5 +1,4 @@
-import MetallicPaint, { parseLogoImage } from "./MetallicPaint";
-import { useState, useEffect } from "react";
+ import { useState, useEffect } from "react";
 import logo from "/js.svg";
 
 const skills = [
