@@ -63,14 +63,14 @@ export default function Navbar() {
         } md:p-3`}
       >
         {/* Logo */}
-        <img
+        {/* <img
           src={"/logo.svg"}
           className="tracking-widest md:w-12 md:h-12 w-11 h-10"
           alt="Cyril"
-        />
+        /> */}
         {/* Menu/X Icon */}
         <button
-          className="ml-3 p-2 rounded-3xl hover:bg-gray-100 transition-all duration-300 bg-gray-100 border border-gray-300 flex items-center justify-center md:p-3"
+          className="p-2 rounded-3xl  transition-all duration-300 bg-black border border-gray-300 flex items-center justify-center md:p-3"
           onClick={handleMenuClick}
           aria-label={open ? "Close menu" : "Open menu"}
           disabled={animating}
