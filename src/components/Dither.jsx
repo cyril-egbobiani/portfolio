@@ -120,19 +120,40 @@ function WaveEffect({
     mouseRadius: { value: mouseRadius },
   };
 
-  // Update time uniform
+  // Update time uniform - this ensures animation continues regardless of interaction
   useFrame(({ clock }) => {
     if (meshRef.current) {
       meshRef.current.material.uniforms.time.value = clock.getElapsedTime();
+      // Always update these uniforms to ensure animation continues
+      meshRef.current.material.uniforms.waveSpeed.value = waveSpeed;
+      meshRef.current.material.uniforms.waveFrequency.value = waveFrequency;
+      meshRef.current.material.uniforms.waveAmplitude.value = waveAmplitude;
     }
   });
 
-  // Handle mouse movement
-  const handlePointerMove = (event) => {
+  // Handle both mouse and touch events
+  const handlePointerEvent = (event) => {
     if (!enableMouseInteraction) return;
+
+    // Prevent default touch behavior to avoid scrolling issues
+    event.preventDefault();
+
     const rect = event.target.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-    const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    let clientX, clientY;
+
+    // Handle both touch and mouse events
+    if (event.touches) {
+      clientX = event.touches[0].clientX;
+      clientY = event.touches[0].clientY;
+    } else {
+      clientX = event.clientX;
+      clientY = event.clientY;
+    }
+
+    // Convert to normalized device coordinates (-1 to +1)
+    const x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    const y = -((clientY - rect.top) / rect.height) * 2 + 1;
+
     setMousePosition(new THREE.Vector2(x, y));
   };
 
@@ -140,7 +161,10 @@ function WaveEffect({
     <mesh
       ref={meshRef}
       scale={[viewport.width, viewport.height, 1]}
-      onPointerMove={handlePointerMove}
+      onPointerMove={handlePointerEvent}
+      onPointerDown={handlePointerEvent}
+      onPointerUp={() => setMousePosition(new THREE.Vector2(0, 0))}
+      onPointerLeave={() => setMousePosition(new THREE.Vector2(0, 0))}
     >
       <planeGeometry args={[1, 1]} />
       <shaderMaterial
@@ -164,15 +188,27 @@ export default function Dither({
   mouseRadius = 1,
 }) {
   return (
-    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        touchAction: "none", // Prevent default touch actions
+      }}
+    >
       <Canvas
         camera={{ position: [0, 0, 1], fov: 75 }}
-        style={{ width: "100%", height: "100%" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          touchAction: "none", // Prevent default touch actions
+        }}
         gl={{
           antialias: true,
           alpha: true,
           powerPreference: "high-performance",
         }}
+        dpr={[1, 2]} // Optimize for mobile devices
       >
         <WaveEffect
           waveSpeed={waveSpeed}

@@ -18,13 +18,13 @@ function App() {
         }}
       >
         <Dither
-          waveColor={[0.85, 0.85, 0.85]}
+          waveColor={[0.95, 0.95, 0.85]}
           disableAnimation={false}
           enableMouseInteraction={true}
           mouseRadius={0.3}
-          colorNum={4}
+          colorNum={100}
           waveAmplitude={1}
-          waveFrequency={10}
+          waveFrequency={9.6}
           waveSpeed={0.05}
         />
       </div>
