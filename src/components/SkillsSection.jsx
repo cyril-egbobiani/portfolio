@@ -1,6 +1,7 @@
 import MetallicPaint, { parseLogoImage } from "./MetallicPaint";
 import { useState, useEffect } from "react";
 import logo from "/js.svg";
+
 const skills = [
   {
     name: "JavaScript",
@@ -34,8 +35,15 @@ const skills = [
 
 const SkillsSection = () => {
   const [imageData, setImageData] = useState(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     async function loadDefaultImage() {
       try {
         const response = await fetch(logo);
@@ -46,11 +54,13 @@ const SkillsSection = () => {
         setImageData(parsedData?.imageData ?? null);
       } catch (err) {
         console.error("Error loading default image:", err);
+        // Fallback to null if image processing fails
+        setImageData(null);
       }
     }
 
     loadDefaultImage();
-  }, []);
+  }, [isClient]);
 
   return (
     <section
@@ -66,23 +76,31 @@ const SkillsSection = () => {
         <div className="grid grid-cols-3 gap-y-10 gap-x-6">
           {skills.map((skill) => (
             <div key={skill.name} className="flex flex-col items-center">
-              <MetallicPaint
-                imageData={imageData ?? new ImageData(1, 1)}
-                params={{
-                  edge: 2,
-                  patternBlur: 0.005,
-                  patternScale: 2,
-                  refraction: 0.015,
-                  speed: 0.3,
-                  liquid: 0.07,
-                }}
-              />
+              {isClient && imageData ? (
+                <MetallicPaint
+                  imageData={imageData}
+                  params={{
+                    edge: 2,
+                    patternBlur: 0.005,
+                    patternScale: 2,
+                    refraction: 0.015,
+                    speed: 0.3,
+                    liquid: 0.07,
+                  }}
+                />
+              ) : (
+                <div className="w-12 h-12 bg-gray-200 rounded animate-pulse" />
+              )}
 
               <img
                 src={skill.icon}
                 alt={skill.name}
                 className="w-12 h-12 mb-2"
                 loading="lazy"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                  console.warn(`Failed to load image: ${skill.icon}`);
+                }}
               />
               <span className="text-gray-800 dark:text-gray-900 text-sm font-medium mt-1 text-center">
                 {skill.name}

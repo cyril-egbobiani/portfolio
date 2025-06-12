@@ -40,7 +40,13 @@ export default function Navbar() {
   return (
     <nav>
       {/* Desktop Navbar (lg and above) */}
-      <div className="hidden lg:flex lg:border justify-center items-between py-3 bg-white/70 backdrop-blur-sm rounded-3xl fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3">
+      <div
+        className="hidden lg:flex lg:border justify-center items-between py-3 bg-[#eeeef300] backdrop-blur-sm rounded-3xl fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3 "
+        style={{
+          boxShadow:
+            "inset 1px -1px 1px -5px #96968bcf, inset -1px 1px 3px -1px 0 8px 10px rgba(123,92,250,0.2)",
+        }}
+      >
         {/* Logo */}
         <img src="/logo.svg" alt="Cyril" className="lg:mr-25" />
         <ul className="flex-1 flex gap-8 font-normal w-fit ">
@@ -58,12 +64,12 @@ export default function Navbar() {
       </div>
       {/* Mobile/Tablet Navbar (md and below) */}
       <div
-        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-sm rounded-4xl p-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
+        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-4xl p-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
           open ? "shadow-xl scale-95" : "shadow-md scale-100"
         } md:p-3`}
         style={{
           boxShadow:
-            "inset .5px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
+            "inset 1px -1px 1px -5px #96968bcf, inset -1px 1px 3px -1px 0 8px 10px rgba(123,92,250,0.2)",
         }}
       >
         {/* Logo */}
@@ -74,13 +80,14 @@ export default function Navbar() {
         />
         {/* Menu/X Icon */}
         <button
-          className="ml-3 p-2 rounded-3xl  transition-all duration-300 bg-black/85 border border-gray-300 flex items-center justify-center md:p-3"
+          className="ml-3 p-2 rounded-3xl  transition-all duration-300 bg-black/85 flex items-center justify-center md:p-3"
           onClick={handleMenuClick}
           aria-label={open ? "Close menu" : "Open menu"}
           disabled={animating}
           style={{
+            // background: "",
             boxShadow:
-              "inset 4px -2px 5px -5px #96968bcf, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
+              "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
           }}
         >
           <span
@@ -97,31 +104,33 @@ export default function Navbar() {
             }}
           >
             {!open ? (
-              <Menu className="w-7 h-7 md:w-8 md:h-8 text-gray-500" />
+              <Menu className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
             ) : (
-              <X className="w-7 h-7 md:w-8 md:h-8 text-gray-500" />
+              <X className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
             )}
           </span>
         </button>
       </div>
       {/* Modal Menu with smooth transition */}
       <div
-        className={`fixed left-1/2 -translate-x-1/2 bottom-21 z-[70] flex flex-col items-center lg:hidden transition-all duration-300 rounded-4xl  ${
+        className={`fixed left-1/2 -translate-x-1/2 bottom-21 z-[70] flex flex-col bg-transparent   border-[#e2e2e2] items-center lg:hidden transition-all duration-300 rounded-4xl  ${
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-10 pointer-events-none"
         }`}
-        style={{
-          boxShadow:
-            "inset 4px -2px 5px -5px #96968bcf, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
-        }}
       >
-        <div className="relative w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw]  border border-blue-100 p-4 flex flex-col items-center shadow-sm bg-white/70 rounded-4xl backdrop-blur-sm ">
+        <div
+          style={{
+            boxShadow:
+              "inset -2px -2px 3px -2px #b6b6b666, inset 2px 2px 3px -2px #b6b6b666, 0 8px 30px rgba(123,92,250,0.2)",
+          }}
+          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#f5f1f163] p-4 flex flex-col items-end shadow-sm rounded-4xl backdrop-blur-sm"
+        >
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-normal text-black hover:text-emerald-500 transition text-lg md:text-xl mb-3 mx-16 whitespace-nowrap"
+              className="font-normal ml-13 text-black hover:text-emerald-500 text-right   transition text-xl md:text-xl mb-3 mx-0 whitespace-nowrap"
               onClick={(e) => handleNavClick(e, item.href)}
             >
               {item.label}

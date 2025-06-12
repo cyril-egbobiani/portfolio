@@ -13,9 +13,12 @@ const defaultParams = {
   speed: 0.3,
 };
 
-export function parseLogoImage(
-  file
-) {
+export function parseLogoImage(file) {
+  // Check if we're in a browser environment
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return Promise.reject(new Error("Not in browser environment"));
+  }
+
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
@@ -38,7 +41,12 @@ export function parseLogoImage(
       let width = img.naturalWidth;
       let height = img.naturalHeight;
 
-      if (width > MAX_SIZE || height > MAX_SIZE || width < MIN_SIZE || height < MIN_SIZE) {
+      if (
+        width > MAX_SIZE ||
+        height > MAX_SIZE ||
+        width < MIN_SIZE ||
+        height < MIN_SIZE
+      ) {
         if (width > height) {
           if (width > MAX_SIZE) {
             height = Math.round((height * MAX_SIZE) / width);
@@ -144,7 +152,10 @@ export function parseLogoImage(
               continue;
             }
             const sumN =
-              getU(x + 1, y, u) + getU(x - 1, y, u) + getU(x, y + 1, u) + getU(x, y - 1, u);
+              getU(x + 1, y, u) +
+              getU(x - 1, y, u) +
+              getU(x, y + 1, u) +
+              getU(x, y - 1, u);
             newU[idx] = (C + sumN) / 4;
           }
         }
@@ -362,15 +373,23 @@ void main() {
 }
 `;
 
-export default function MetallicPaint({
-  imageData,
-  params = defaultParams,
-}) {
+export default function MetallicPaint({ imageData, params = defaultParams }) {
   const canvasRef = useRef(null);
   const [gl, setGl] = useState(null);
   const [uniforms, setUniforms] = useState({});
+  const [isClient, setIsClient] = useState(false);
   const totalAnimationTime = useRef(0);
   const lastRenderTime = useRef(0);
+
+  // Check if we're in a browser environment
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Don't render anything during SSR
+  if (!isClient) {
+    return <div className="w-12 h-12 bg-gray-200 rounded animate-pulse" />;
+  }
 
   function updateUniforms() {
     if (!gl || !uniforms) return;
@@ -393,11 +412,7 @@ export default function MetallicPaint({
         return;
       }
 
-      function createShader(
-        gl,
-        sourceCode,
-        type
-      ) {
+      function createShader(gl, sourceCode, type) {
         const shader = gl.createShader(type);
         if (!shader) {
           return null;
@@ -409,7 +424,7 @@ export default function MetallicPaint({
         if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
           console.error(
             "An error occurred compiling the shaders: " +
-            gl.getShaderInfoLog(shader)
+              gl.getShaderInfoLog(shader)
           );
           gl.deleteShader(shader);
           return null;
@@ -440,7 +455,7 @@ export default function MetallicPaint({
       if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
         console.error(
           "Unable to initialize the shader program: " +
-          gl.getProgramInfoLog(program)
+            gl.getProgramInfoLog(program)
         );
         return null;
       }
@@ -451,10 +466,7 @@ export default function MetallicPaint({
         for (let i = 0; i < uniformCount; i++) {
           let uniformName = gl.getActiveUniform(program, i)?.name;
           if (!uniformName) continue;
-          uniforms[uniformName] = gl.getUniformLocation(
-            program,
-            uniformName
-          );
+          uniforms[uniformName] = gl.getUniformLocation(program, uniformName);
         }
         return uniforms;
       }
