@@ -130,7 +130,7 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              className="font-normal ml-15 text-black hover:text-emerald-400 text-right   transition text-2xl md:text-2xl mb-3 mx-0 whitespace-nowrap"
+              className="ml-15 text-black/80 hover:text-emerald-400 text-right  font-medium transition text-2xl md:text-2xl mb-3 mx-0 whitespace-nowrap"
               onClick={(e) => handleNavClick(e, item.href)}
             >
               {item.label}
