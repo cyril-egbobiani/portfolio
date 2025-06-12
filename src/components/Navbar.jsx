@@ -61,16 +61,20 @@ export default function Navbar() {
         className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-sm rounded-4xl p-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
           open ? "shadow-xl scale-95" : "shadow-md scale-100"
         } md:p-3`}
+        style={{
+          boxShadow:
+            "inset .5px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
+        }}
       >
         {/* Logo */}
-        {/* <img
+        <img
           src={"/logo.svg"}
           className="tracking-widest md:w-12 md:h-12 w-11 h-10"
           alt="Cyril"
-        /> */}
+        />
         {/* Menu/X Icon */}
         <button
-          className="p-2 rounded-3xl  transition-all duration-300 bg-black border border-gray-300 flex items-center justify-center md:p-3"
+          className="ml-3 p-2 rounded-3xl  transition-all duration-300 bg-black/85 border border-gray-300 flex items-center justify-center md:p-3"
           onClick={handleMenuClick}
           aria-label={open ? "Close menu" : "Open menu"}
           disabled={animating}
