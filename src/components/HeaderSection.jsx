@@ -1,8 +1,6 @@
 import { Locate, X } from "lucide-react";
 import { easeOut, motion } from "framer-motion";
-import TrueFocus from "./TrueFocus";
-import SplitText from "./SplitText";
-
+ 
 export default function HeaderSection() {
   // Animation variants
   const containerVariants = {
@@ -154,7 +152,7 @@ export default function HeaderSection() {
             </motion.span>
             <motion.span
               variants={itemVariants}
-              className="flex items-center gap-1 text-emerald-400 font-medium text-sm mt-1 Instrument Sans"
+              className="flex items-center gap-1 text-emerald-400 font-medium text-sm mt-[.2em] Instrument Sans"
             >
               <Locate className="w-4 h-4" />
               Lagos, Nigeria
@@ -166,7 +164,8 @@ export default function HeaderSection() {
           variants={itemVariants}
           whileHover={{
             scale: 1.02,
-            boxShadow: "0 8px 30px rgba(123,92,250,0.2)",
+            boxShadow:
+              "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
           }}
           whileTap={{ scale: 0.98 }}
           className="
@@ -177,9 +176,12 @@ export default function HeaderSection() {
             shadow-md
             transition-all duration-150
             relative z-10
+            bg-black/92
           "
           style={{
-            background: "linear-gradient(360deg, #181818 80%, #7B5CFA 120%)",
+            // background: "",
+            boxShadow:
+              "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
           }}
         >
           Lets talk{" "}
@@ -218,7 +220,8 @@ export default function HeaderSection() {
             whileHover="hover"
             whileTap="tap"
             custom={index}
-            className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-800 text-xl hover:bg-gray-50 transition"
+            className="w-10 h-10 rounded-xl  border border-gray-200 flex items-center justify-center text-gray-800 text-xl hover:bg-gray-50 transition"
+          
           >
             <img src={`/${social}.svg`} alt={social} />
           </motion.button>
