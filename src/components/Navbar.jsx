@@ -124,13 +124,13 @@ export default function Navbar() {
             boxShadow:
               "inset -2px -2px 3px -2px #b6b6b666, inset 2px 2px 3px -2px #b6b6b666, 0 8px 30px rgba(123,92,250,0.2)",
           }}
-          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#f5f1f163] p-4 flex flex-col items-end shadow-sm rounded-4xl backdrop-blur-sm"
+          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#ffffff63] p-4 flex flex-col items-end shadow-sm rounded-4xl backdrop-blur-sm"
         >
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-normal ml-13 text-black hover:text-emerald-500 text-right   transition text-xl md:text-xl mb-3 mx-0 whitespace-nowrap"
+              className="font-normal ml-15 text-black hover:text-emerald-400 text-right   transition text-2xl md:text-2xl mb-3 mx-0 whitespace-nowrap"
               onClick={(e) => handleNavClick(e, item.href)}
             >
               {item.label}
