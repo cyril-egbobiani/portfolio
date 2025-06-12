@@ -106,8 +106,8 @@ export default function ProjectsSection() {
 									rel="noopener noreferrer"
 									className="inline-flex text-sm items-center gap-2 px-4 py-2 rounded-full border w-fit border-gray-50 text-gray-900 font-semibold bg-gray-50 hover:bg-gray-100 transition"
 								>
-									<Link2 className="w-5 h-5 stroke-3" />
-									<span style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+									<Link2 className="w-5 h-5 stroke-2" />
+									<span className="font-normal`" style={{ fontFamily: "'mono',  " }}>
 										Visit
 									</span>
 								</a>

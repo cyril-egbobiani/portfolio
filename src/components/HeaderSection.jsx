@@ -84,7 +84,7 @@ export default function HeaderSection() {
           xl:max-w-[28vw]
           2xl:max-w-[24vw]
           rounded-[2rem]
-          border border-gray-100
+        
           p-4
           flex flex-col items-center shadow-sm
           bg-white

@@ -4,6 +4,7 @@ import HeaderSection from "./components/HeaderSection";
 import AboutMeSection from "./components/AboutMeSection";
 import SkillsSection from "./components/SkillsSection";
 import ErrorBoundary from "./components/ErrorBoundary";
+import ProjectsSection from "./components/ProjectsSection";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <HeaderSection />
         <AboutMeSection />
         <SkillsSection />
+        <ProjectsSection />
       </div>
     </ErrorBoundary>
   );
