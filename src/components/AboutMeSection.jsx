@@ -5,7 +5,7 @@ export default function AboutMeSection() {
   return (
     <motion.section
       id="about"
-      className="flex flex-col items-center justify-center py-12  px-4 my-25"
+      className="flex flex-col items-center b justify-center py-30  px-4"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
@@ -31,8 +31,8 @@ export default function AboutMeSection() {
       >
         My aim is to build as many solutions and make as many people happy. As
         much as I would like to say “I can do it all on my own”... I can’t. I so
-        much derive joy in working with people and creating not just solutions
-        but life transformations together.
+        much derive joy in working with people and creating solutions
+        together.
       </motion.p>
     </motion.section>
   );

@@ -62,6 +62,7 @@ export default function Navbar() {
             <li key={item.label}>
               <a
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="hover:text-emerald-500 transition-colors duration-300 Instrument Sans"
               >
                 {item.label}
@@ -81,17 +82,17 @@ export default function Navbar() {
             "inset 1px -1px 1px -5px #96968bcf, inset -1px 1px 3px -1px 0 8px 10px rgba(123,92,250,0.2)",
         }}
       >
-         {/* Message/Let's talk icon button for mobile */}
+        {/* Message/Let's talk icon button for mobile */}
         <a
           href="#contact"
-          className="mr-2 p-2 rounded-2xl transition-all duration-300 bg-black/85 flex items-center justify-center md:p-3"
+          className="mr-2 p-2 rounded-2xl transition-all duration-300 bg-black/90 flex items-center justify-center md:p-3"
           style={{
             boxShadow:
               "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
           }}
           aria-label="Message"
         >
-          <Mail className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
+          <Mail className="w-7 h-7 md:w-8 md:h-8 text-gray-200" />
         </a>
         {/* Logo */}
         <img
@@ -99,10 +100,10 @@ export default function Navbar() {
           className="tracking-widest md:w-12 md:h-12 w-11 h-10"
           alt="Cyril"
         />
-       
+
         {/* Menu/X Icon */}
         <button
-          className="ml-2 p-2 rounded-2xl transition-all duration-300 bg-black/85 flex items-center justify-center md:p-3"
+          className="ml-2 p-2 rounded-2xl transition-all duration-300 bg-black/90 flex items-center justify-center md:p-3"
           onClick={handleMenuClick}
           aria-label={open ? "Close menu" : "Open menu"}
           disabled={animating}
@@ -125,7 +126,7 @@ export default function Navbar() {
             }}
           >
             {!open ? (
-              <Menu className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
+              <Menu className="w-7 h-7 md:w-8 md:h-8 text-gray-200" />
             ) : (
               <X className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
             )}

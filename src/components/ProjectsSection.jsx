@@ -41,7 +41,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="flex flex-col items-center justify-center py-16 px-2  "
+      className="flex flex-col items-center justify-center py-30 px-2"
     >
       {/* Section Pill */}
       <span className="text-center text-2xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 bg-clip-text text-transparent border-1 mb-5">

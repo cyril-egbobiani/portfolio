@@ -23,7 +23,7 @@ function App() {
           <LiquidChrome
             baseColor={[0.9, 0.9, 1]}
             speed={0.2}
-            amplitude={0.10}
+            amplitude={0.05}
             interactive={true}
             // If your LiquidChrome accepts width/height props, pass them here
             // width="100vw"

@@ -41,7 +41,7 @@ const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="flex flex-col items-center justify-center py-16 px-4"
+      className="flex flex-col items-center justify-center py-30 px-4"
     >
       {/* Skills Pill */}
       <span className="mb-4 py-1 text-center text-2xl md:text-3xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 px-5 bg-clip-text text-transparent">
