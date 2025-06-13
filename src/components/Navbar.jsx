@@ -145,7 +145,7 @@ export default function Navbar() {
             boxShadow:
               "inset -2px -2px 3px -2px #b6b6b666, inset 2px 2px 3px -2px #b6b6b666, 0 8px 30px rgba(123,92,250,0.2)",
           }}
-          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#ffffff63] p-4 flex flex-col items-end shadow-sm rounded-3xl backdrop-blur-2xl"
+          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#ffffff] p-4 flex flex-col items-end shadow-sm rounded-3xl backdrop-blur-2xl"
         >
           {navItems.map((item) => (
             <a
