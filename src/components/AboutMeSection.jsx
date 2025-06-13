@@ -30,9 +30,9 @@ export default function AboutMeSection() {
         transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
       >
         My aim is to build as many solutions and make as many people happy. As
-        much as I would love to say “I can do it all on my own” I can’t. I so
+        much as I would like to say “I can do it all on my own”...I can’t. I so
         much derive joy in working with people and creating not just solutions
-        together but life transformations.
+        but life transformations together.
       </motion.p>
     </motion.section>
   );
