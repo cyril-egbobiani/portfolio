@@ -109,7 +109,7 @@ export default function ProjectsSection() {
                   }}
                 >
                   <Link2 className="w-5 h-5 stroke-2" />
-                  <span className="font-normal mono">VISIT</span>
+                  <span className="font-normal mono">Visit</span>
                 </a>
               </div>
             </div>
