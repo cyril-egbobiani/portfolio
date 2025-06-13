@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useRef, useState, useEffect } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import * as THREE from "three";
 
@@ -95,6 +95,22 @@ void main() {
 }
 `;
 
+// Device detection helper
+const getDeviceType = () => {
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return "tablet";
+  }
+  if (
+    /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      ua
+    )
+  ) {
+    return "mobile";
+  }
+  return "desktop";
+};
+
 function WaveEffect({
   waveSpeed,
   waveFrequency,
@@ -106,13 +122,47 @@ function WaveEffect({
   const meshRef = useRef();
   const [mousePosition, setMousePosition] = useState(new THREE.Vector2(0, 0));
   const { viewport, size } = useThree();
+  const rafRef = useRef();
+  const timeRef = useRef(0);
+  const deviceType = useRef(getDeviceType());
+
+  // Device-specific settings
+  const getDeviceSettings = () => {
+    switch (deviceType.current) {
+      case "mobile":
+        return {
+          speedMultiplier: 0.5,
+          frequencyMultiplier: 0.8,
+          timeMultiplier: 0.8,
+          frameSkip: 2,
+        };
+      case "tablet":
+        return {
+          speedMultiplier: 0.7,
+          frequencyMultiplier: 0.9,
+          timeMultiplier: 0.9,
+          frameSkip: 1,
+        };
+      default:
+        return {
+          speedMultiplier: 1,
+          frequencyMultiplier: 1,
+          timeMultiplier: 1,
+          frameSkip: 0,
+        };
+    }
+  };
+
+  const deviceSettings = getDeviceSettings();
 
   // Create uniforms object
   const uniforms = {
     time: { value: 0 },
     resolution: { value: new THREE.Vector2(size.width, size.height) },
-    waveSpeed: { value: waveSpeed },
-    waveFrequency: { value: waveFrequency },
+    waveSpeed: { value: waveSpeed * deviceSettings.speedMultiplier },
+    waveFrequency: {
+      value: waveFrequency * deviceSettings.frequencyMultiplier,
+    },
     waveAmplitude: { value: waveAmplitude },
     waveColor: { value: new THREE.Color(...waveColor) },
     mousePos: { value: mousePosition },
@@ -120,28 +170,74 @@ function WaveEffect({
     mouseRadius: { value: mouseRadius },
   };
 
-  // Update time uniform - this ensures animation continues regardless of interaction
-  useFrame(({ clock }) => {
-    if (meshRef.current) {
-      meshRef.current.material.uniforms.time.value = clock.getElapsedTime();
-      // Always update these uniforms to ensure animation continues
-      meshRef.current.material.uniforms.waveSpeed.value = waveSpeed;
-      meshRef.current.material.uniforms.waveFrequency.value = waveFrequency;
-      meshRef.current.material.uniforms.waveAmplitude.value = waveAmplitude;
-    }
-  });
+  // Animation loop with device-specific optimization
+  useEffect(() => {
+    let lastTime = performance.now();
+    let isActive = true;
+    let frameCount = 0;
 
-  // Handle both mouse and touch events
+    const animate = (currentTime) => {
+      if (!isActive || !meshRef.current) return;
+
+      const deltaTime = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+
+      // Update time uniform with device-specific optimization
+      timeRef.current += deltaTime * deviceSettings.timeMultiplier;
+      meshRef.current.material.uniforms.time.value = timeRef.current;
+
+      // Update other uniforms
+      meshRef.current.material.uniforms.waveSpeed.value =
+        waveSpeed * deviceSettings.speedMultiplier;
+      meshRef.current.material.uniforms.waveFrequency.value =
+        waveFrequency * deviceSettings.frequencyMultiplier;
+      meshRef.current.material.uniforms.waveAmplitude.value = waveAmplitude;
+      meshRef.current.material.uniforms.waveColor.value.set(...waveColor);
+      meshRef.current.material.uniforms.mousePos.value.copy(mousePosition);
+
+      // Frame skipping based on device type
+      if (deviceSettings.frameSkip > 0) {
+        frameCount++;
+        if (frameCount % deviceSettings.frameSkip === 0) {
+          rafRef.current = requestAnimationFrame(animate);
+          return;
+        }
+      }
+
+      rafRef.current = requestAnimationFrame(animate);
+    };
+
+    // Start animation immediately
+    rafRef.current = requestAnimationFrame(animate);
+
+    // Cleanup function
+    return () => {
+      isActive = false;
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [
+    waveSpeed,
+    waveFrequency,
+    waveAmplitude,
+    waveColor,
+    mousePosition,
+    deviceSettings,
+  ]);
+
+  // Handle pointer events with device-specific optimization
   const handlePointerEvent = (event) => {
     if (!enableMouseInteraction) return;
 
-    // Prevent default touch behavior to avoid scrolling issues
-    event.preventDefault();
+    // Prevent default touch behavior
+    if (event.touches) {
+      event.preventDefault();
+    }
 
     const rect = event.target.getBoundingClientRect();
     let clientX, clientY;
 
-    // Handle both touch and mouse events
     if (event.touches) {
       clientX = event.touches[0].clientX;
       clientY = event.touches[0].clientY;
@@ -150,11 +246,15 @@ function WaveEffect({
       clientY = event.clientY;
     }
 
-    // Convert to normalized device coordinates (-1 to +1)
     const x = ((clientX - rect.left) / rect.width) * 2 - 1;
     const y = -((clientY - rect.top) / rect.height) * 2 + 1;
 
     setMousePosition(new THREE.Vector2(x, y));
+  };
+
+  // Reset mouse position
+  const resetMousePosition = () => {
+    setMousePosition(new THREE.Vector2(0, 0));
   };
 
   return (
@@ -163,8 +263,9 @@ function WaveEffect({
       scale={[viewport.width, viewport.height, 1]}
       onPointerMove={handlePointerEvent}
       onPointerDown={handlePointerEvent}
-      onPointerUp={() => setMousePosition(new THREE.Vector2(0, 0))}
-      onPointerLeave={() => setMousePosition(new THREE.Vector2(0, 0))}
+      onPointerUp={resetMousePosition}
+      onPointerLeave={resetMousePosition}
+      onPointerCancel={resetMousePosition}
     >
       <planeGeometry args={[1, 1]} />
       <shaderMaterial
@@ -187,13 +288,31 @@ export default function Dither({
   enableMouseInteraction = true,
   mouseRadius = 1,
 }) {
+  const deviceType = getDeviceType();
+
+  // Device-specific DPR settings
+  const getDeviceDPR = () => {
+    switch (deviceType) {
+      case "mobile":
+        return [0.5, 1];
+      case "tablet":
+        return [0.75, 1.5];
+      default:
+        return [1, 2];
+    }
+  };
+
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
         position: "relative",
-        touchAction: "none", // Prevent default touch actions
+        touchAction: "none",
+        WebkitTouchCallout: "none",
+        WebkitUserSelect: "none",
+        userSelect: "none",
+        WebkitTapHighlightColor: "transparent",
       }}
     >
       <Canvas
@@ -201,14 +320,20 @@ export default function Dither({
         style={{
           width: "100%",
           height: "100%",
-          touchAction: "none", // Prevent default touch actions
+          touchAction: "none",
+          WebkitTapHighlightColor: "transparent",
         }}
         gl={{
-          antialias: true,
+          antialias: deviceType === "desktop",
           alpha: true,
           powerPreference: "high-performance",
+          failIfMajorPerformanceCaveat: false,
+          stencil: false,
+          depth: false,
         }}
-        dpr={[1, 2]} // Optimize for mobile devices
+        dpr={getDeviceDPR()}
+        frameloop="always"
+        performance={{ min: deviceType === "mobile" ? 0.5 : 0.8 }}
       >
         <WaveEffect
           waveSpeed={waveSpeed}
@@ -218,7 +343,9 @@ export default function Dither({
           enableMouseInteraction={enableMouseInteraction}
           mouseRadius={mouseRadius}
         />
-        <EffectComposer>
+        <EffectComposer enabled={false}>
+          {" "}
+          {/* Disable post-processing for better performance */}
           {/* Add any post-processing effects here if needed */}
         </EffectComposer>
       </Canvas>

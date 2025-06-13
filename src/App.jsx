@@ -22,9 +22,9 @@ function App() {
           disableAnimation={false}
           enableMouseInteraction={true}
           mouseRadius={0.3}
-          colorNum={100}
+          colorNum={4}
           waveAmplitude={1}
-          waveFrequency={9.6}
+          waveFrequency={10}
           waveSpeed={0.05}
         />
       </div>
