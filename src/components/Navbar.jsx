@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Mail } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#" },
@@ -12,6 +12,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [animating, setAnimating] = useState(false);
   const [iconOut, setIconOut] = useState(false);
+  const [showTalkButton, setShowTalkButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when scrolled past 100vh (header height)
+      setShowTalkButton(window.scrollY > window.innerHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleMenuClick = () => {
     setIconOut(true);
@@ -41,7 +52,7 @@ export default function Navbar() {
     <nav>
       {/* Desktop Navbar (lg and above) */}
       <div
-        className="hidden lg:flex lg:border justify-center items-between py-3 bg-[#eeeef300] backdrop-blur-sm rounded-3xl fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3 "
+        className="hidden lg:flex lg:border justify-center items-between py-3 bg-[#eeeef300] backdrop-blur-sm rounded-full fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3"
         style={{
           boxShadow:
             "inset 1px -1px 1px -5px #96968bcf, inset -1px 1px 3px -1px 0 8px 10px rgba(123,92,250,0.2)",
@@ -49,7 +60,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <img src="/logo.svg" alt="Cyril" className="lg:mr-25" />
-        <ul className="flex-1 flex gap-8 font-normal w-fit ">
+        <ul className="flex-1 flex gap-8 font-normal w-fit">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
@@ -62,6 +73,25 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
+
+      {/* Desktop Let's Talk Button - Positioned beside navbar */}
+      <a
+        href="#contact"
+        className={`hidden lg:fixed lg:top-4 lg:right-4 px-6 py-2 rounded-full Instrument Sans bg-black/70 text-white font-medium z-50 transition-all duration-700 transform
+    ${
+      showTalkButton
+        ? "translate-x-0 opacity-100"
+        : "translate-x-8 opacity-0 pointer-events-none"
+    }
+  `}
+        style={{
+          boxShadow:
+            "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
+        }}
+      >
+        Let's talk 👋🏼
+      </a>
+
       {/* Mobile/Tablet Navbar (md and below) */}
       <div
         className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-4xl p-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
@@ -78,14 +108,25 @@ export default function Navbar() {
           className="tracking-widest md:w-12 md:h-12 w-11 h-10"
           alt="Cyril"
         />
+        {/* Let's talk icon button for mobile */}
+        <a
+          href="#contact"
+          className="ml-2 p-2 rounded-full bg-black/85 flex items-center justify-center"
+          style={{
+            boxShadow:
+              "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
+          }}
+          aria-label="Let's talk"
+        >
+          <Mail className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
+        </a>
         {/* Menu/X Icon */}
         <button
-          className="ml-3 p-2 rounded-3xl  transition-all duration-300 bg-black/85 flex items-center justify-center md:p-3"
+          className="ml-3 p-2 rounded-3xl transition-all duration-300 bg-black/85 flex items-center justify-center"
           onClick={handleMenuClick}
           aria-label={open ? "Close menu" : "Open menu"}
           disabled={animating}
           style={{
-            // background: "",
             boxShadow:
               "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
           }}
@@ -169,6 +210,14 @@ export default function Navbar() {
           }
           .animate-scale-fade-in {
             animation: scaleFadeIn 0.22s cubic-bezier(.4,0,.2,1);
+          }
+          @keyframes tapButton {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+          }
+          .animate-tap-button {
+            animation: tapButton 0.008s cubic-bezier(.4,0,.2,1);
           }
         `}
       </style>

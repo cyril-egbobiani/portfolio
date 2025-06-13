@@ -184,7 +184,7 @@ export default function HeaderSection() {
               "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
           }}
         >
-          Lets talk{" "}
+          Let's talk{" "}
           <motion.span
             animate={{
               rotate: [0, 10, -10, 0],
