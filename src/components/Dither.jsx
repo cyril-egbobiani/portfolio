@@ -230,8 +230,14 @@ function WaveEffect({
   const handlePointerEvent = (event) => {
     if (!enableMouseInteraction) return;
 
-    // For react-three-fiber pointer events, use event.clientX/Y and event.target.ownerDocument
+    // Prevent default touch behavior
+    if (event.touches) {
+      event.preventDefault();
+    }
+
+    const rect = event.target.getBoundingClientRect();
     let clientX, clientY;
+
     if (event.touches) {
       clientX = event.touches[0].clientX;
       clientY = event.touches[0].clientY;
@@ -239,16 +245,6 @@ function WaveEffect({
       clientX = event.clientX;
       clientY = event.clientY;
     }
-
-    // Get the canvas element
-    const canvas =
-      event.target instanceof HTMLCanvasElement
-        ? event.target
-        : event.target?.ownerDocument?.querySelector("canvas");
-
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
 
     const x = ((clientX - rect.left) / rect.width) * 2 - 1;
     const y = -((clientY - rect.top) / rect.height) * 2 + 1;

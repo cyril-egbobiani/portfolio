@@ -5,7 +5,7 @@ import AboutMeSection from "./components/AboutMeSection";
 import SkillsSection from "./components/SkillsSection";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ProjectsSection from "./components/ProjectsSection";
-import Dither from "./components/Dither";
+import LiquidChrome from "./components/Chrome";
 
 function App() {
   return (
@@ -14,19 +14,22 @@ function App() {
       <div
         className="fixed inset-0 -z-10"
         style={{
+          width: "100vw",
+          height: "100vh",
           background: "linear-gradient(180deg, #fff 0%, #f5f1f163 100%)",
         }}
       >
-        <Dither
-          waveColor={[0.95, 0.95, 0.85]}
-          disableAnimation={false}
-          enableMouseInteraction={true}
-          mouseRadius={0.3}
-          colorNum={4}
-          waveAmplitude={1}
-          waveFrequency={10}
-          waveSpeed={0.05}
-        />
+        <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+          <LiquidChrome
+            baseColor={[0.9, 0.9, 1]}
+            speed={0.2}
+            amplitude={0.10}
+            interactive={true}
+            // If your LiquidChrome accepts width/height props, pass them here
+            // width="100vw"
+            // height="100vh"
+          />
+        </div>
       </div>
 
       {/* Main Content */}
