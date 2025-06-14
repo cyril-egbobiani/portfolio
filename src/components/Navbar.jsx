@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile/Tablet Navbar (md and below) */}
       <div
-        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-3xl p-3 flex gap-2 items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
+        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-3xl p-3 flex gap-2 items-center justify-between z-50 border border-gray-200 w-fit transition-all duration-300 ${
           open ? "shadow-xl scale-95" : "shadow-md scale-100"
         } md:p-3`}
         style={{
@@ -128,7 +128,7 @@ export default function Navbar() {
             {!open ? (
               <Menu className="w-7 h-7 md:w-8 md:h-8 text-gray-200" />
             ) : (
-              <X className="w-7 h-7 md:w-8 md:h-8 text-gray-400" />
+              <X className="w-7 h-7 md:w-8 md:h-8 text-gray-200" />
             )}
           </span>
         </button>
@@ -146,7 +146,7 @@ export default function Navbar() {
             boxShadow:
               "inset -2px -2px 3px -2px #b6b6b666, inset 2px 2px 3px -2px #b6b6b666, 0 8px 30px rgba(123,92,250,0.2)",
           }}
-          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#ffffff] p-4 flex flex-col items-end shadow-sm rounded-3xl backdrop-blur-2xl"
+          className="relative  w-fit max-w-xs sm:max-w-sm md:max-w-[40vw] lg:max-w-[32vw] xl:max-w-[28vw] 2xl:max-w-[24vw] bg-[#ffffff90] p-4 flex flex-col items-end shadow-sm rounded-3xl mb-2 border border-gray-200 backdrop-blur-2xl"
         >
           {navItems.map((item) => (
             <a
