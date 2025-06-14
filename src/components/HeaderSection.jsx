@@ -212,7 +212,7 @@ export default function HeaderSection() {
         </motion.h1>
         <motion.h1
           variants={itemVariants}
-          className="text-center sm:px-4 text-1xl md:text-xl mt-2 mono font-bold leading-tight bg-gray-700 px-8 bg-clip-text text-transparent"
+          className="text-center sm:px-4 text-1xl md:text-xl mt-2 mono font-normal leading-tight bg-gray-600 px-8 bg-clip-text text-transparent"
         >
            Designing with empathy and developing with clarity.
         </motion.h1>
