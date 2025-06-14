@@ -69,7 +69,7 @@ export default function HeaderSection() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col items-center justify-center min-h-[60vh] mt-12 sm:mt-18 lg:mt-25"
+      className="flex flex-col items-center  justify-center min-h-[60vh] mt-12 sm:mt-18 lg:mt-25"
     >
       {/* Card */}
       <motion.div
@@ -212,7 +212,7 @@ export default function HeaderSection() {
         </motion.h1>
         <motion.h1
           variants={itemVariants}
-          className="text-center sm:px-4 text-1xl md:text-xl mt-2 mono leading-tight bg-gray-600 px-4 bg-clip-text text-transparent"
+          className="text-center sm:px-4 text-1xl md:text-xl mt-2 mono font-bold leading-tight bg-gray-700 px-8 bg-clip-text text-transparent"
         >
            Designing with empathy and developing with clarity.
         </motion.h1>
@@ -226,7 +226,7 @@ export default function HeaderSection() {
             whileHover="hover"
             whileTap="tap"
             custom={index}
-            className="w-10 h-10 rounded-xl  border border-gray-200 flex items-center justify-center text-gray-800 text-xl hover:bg-gray-50 transition"
+            className="w-10 h-10 rounded-xl  border border-gray-50 flex items-center justify-center text-gray-800 text-xl hover:bg-gray-50 transition"
           
           >
             <img src={`/${social}.svg`} alt={social} />

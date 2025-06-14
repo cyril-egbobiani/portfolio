@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Menu, X, Mail } from "lucide-react";
 
 const navItems = [
-  { label: "Home", href: "#" },
-  { label: "About me", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "HOME", href: "#" },
+  { label: "ABOUT", href: "#about" },
+  { label: "SKILLS", href: "#skills" },
+  { label: "PROJECTS", href: "#projects" },
 ];
 
 export default function Navbar() {
@@ -49,7 +49,7 @@ export default function Navbar() {
     <nav>
       {/* Desktop Navbar (lg and above) */}
       <div
-        className="hidden lg:flex lg:border justify-center items-between py-3 bg-[#eeeef300] backdrop-blur-sm rounded-full fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3"
+        className="hidden lg:flex lg:border justify-center items-between py-3 bg-[#eeeef300] backdrop-blur-sm  font-extrabold  rounded-full fixed top-4 left-1/2 -translate-x-1/2 border border-gray-200 z-50 px-5 pl-3"
         style={{
           boxShadow:
             "inset 1px -1px 1px -5px #96968bcf, inset -1px 1px 3px -1px 0 8px 10px rgba(123,92,250,0.2)",
@@ -63,7 +63,7 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="hover:text-emerald-500 transition-colors duration-300 Instrument Sans"
+                className="hover:text-emerald-500 transition-colors duration-300 mono font-bold text-gray-700"
               >
                 {item.label}
               </a>
@@ -152,7 +152,7 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              className="ml-15 text-black/80 hover:text-emerald-400 text-right  font-medium transition text-2xl md:text-2xl mb-3 mx-0 whitespace-nowrap"
+              className="ml-15 text-gray-700 hover:text-emerald-400 text-right mono font-extrabold transition text-2xl md:text-2xl mb-3 mx-0 whitespace-nowrap"
               onClick={(e) => handleNavClick(e, item.href)}
             >
               {item.label}
