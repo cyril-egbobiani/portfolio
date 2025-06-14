@@ -21,7 +21,7 @@ function App() {
       >
         <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
           <LiquidChrome
-            baseColor={[0.9, 0.9, 1]}
+            baseColor={[0.95, 0.95, 0.96]}
             speed={0.2}
             amplitude={0.05}
             interactive={true}

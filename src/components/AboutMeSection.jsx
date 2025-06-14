@@ -5,14 +5,14 @@ export default function AboutMeSection() {
   return (
     <motion.section
       id="about"
-      className="flex flex-col items-center b justify-center py-30  px-4"
+      className="flex flex-col items-center b justify-center py-50  px-4"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       {/* "About Me" Pill */}
-      <motion.span
+      {/* <motion.span
         className="text-center text-2xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500 bg-clip-text text-transparent border-1 mb-5"
         initial={{ scale: 0.95, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
@@ -20,10 +20,10 @@ export default function AboutMeSection() {
         transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
       >
         About Me
-      </motion.span>
+      </motion.span> */}
       {/* Description */}
       <motion.p
-        className="max-w-lg  lg:text-center text-gray-800 text-base md:text-lg font-medium leading-relaxed"
+        className="max-w-lg  lg:text-center text-gray-800 text-xl md:text-xl font-medium leading-relaxed"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.7 }}

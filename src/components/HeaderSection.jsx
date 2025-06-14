@@ -208,7 +208,13 @@ export default function HeaderSection() {
           variants={itemVariants}
           className="text-center sm:px-4 text-3xl md:text-4xl font-bold Instrument Sans leading-tight bg-gradient-to-b from-gray-700 via-gray-900 to-gray-500  bg-clip-text text-transparent"
         >
-          Software Developer designing with empathy and developing with clarity.
+          Software Developer  
+        </motion.h1>
+        <motion.h1
+          variants={itemVariants}
+          className="text-center sm:px-4 text-1xl md:text-xl mt-2 mono leading-tight bg-gray-600  bg-clip-text text-transparent"
+        >
+           Designing with empathy and developing with clarity.
         </motion.h1>
       </motion.div>
       {/* Social Icons */}
