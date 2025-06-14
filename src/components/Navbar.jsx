@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile/Tablet Navbar (md and below) */}
       <div
-        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-3xl p-3 flex gap-2 items-center justify-between z-50 border border-gray-200 w-fit transition-all duration-300 ${
+        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-3xl p-2 flex gap-2 items-center justify-between z-50 border border-gray-200 w-fit transition-all duration-300 ${
           open ? "shadow-xl scale-95" : "shadow-md scale-100"
         } md:p-3`}
         style={{
