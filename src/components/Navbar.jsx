@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile/Tablet Navbar (md and below) */}
       <div
-        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-3xl p-2 flex items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
+        className={`lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 bg-[#eeeef300] backdrop-blur-sm rounded-3xl p-3 flex gap-2 items-center justify-between z-50 border border-gray-200 w-fit px-2 transition-all duration-300 ${
           open ? "shadow-xl scale-95" : "shadow-md scale-100"
         } md:p-3`}
         style={{
@@ -82,10 +82,16 @@ export default function Navbar() {
             "inset 1px -1px 1px -5px #96968bcf, inset -1px 1px 3px -1px 0 8px 10px rgba(123,92,250,0.2)",
         }}
       >
+        {/* Logo */}
+        <img
+          src={"/logo.svg"}
+          className="tracking-widest md:w-12 md:h-12 w-11 h-10"
+          alt="Cyril"
+        />
         {/* Message/Let's talk icon button for mobile */}
         <a
           href="#contact"
-          className="mr-2 p-2 rounded-2xl transition-all duration-300 bg-black/90 flex items-center justify-center md:p-3"
+          className=" p-2 rounded-2xl transition-all duration-300 bg-black/90 flex items-center justify-center md:p-3"
           style={{
             boxShadow:
               "inset 4px -2px 5px -2px #96968b, inset -3px 2px 5px -2px #e6e6e6, 0 8px 30px rgba(123,92,250,0.2)",
@@ -94,16 +100,10 @@ export default function Navbar() {
         >
           <Mail className="w-7 h-7 md:w-8 md:h-8 text-gray-200" />
         </a>
-        {/* Logo */}
-        <img
-          src={"/logo.svg"}
-          className="tracking-widest md:w-12 md:h-12 w-11 h-10"
-          alt="Cyril"
-        />
 
         {/* Menu/X Icon */}
         <button
-          className="ml-2 p-2 rounded-2xl transition-all duration-300 bg-black/90 flex items-center justify-center md:p-3"
+          className=" p-2 rounded-2xl transition-all duration-300 bg-black/90 flex items-center justify-center md:p-3"
           onClick={handleMenuClick}
           aria-label={open ? "Close menu" : "Open menu"}
           disabled={animating}
